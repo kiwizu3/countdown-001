@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100-Hour Countdown</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0; /* Remove default margin */
+        }
+        .col-12 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .countdown-container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 400px;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        @media (max-width: 480px) {
+            .countdown {
+                font-size: 1.5rem;
+            }
+            .countdown-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-12 flex-column">
+            <div class="mt-5 countdown-container mb-auto">
+                <h3 class="fw-bold">Time for the email for video call</h3>
+                <div id="countdown" class="countdown">Loading...</div>
+                <br>
+                <a href="https://weworkremotely.com/remote-jobs/ailean-io-ux-product-design-lead-fast-growing-swiss-ai-startup">Link to the Job</a>
+            </div>
+            <p>Made with ♥️ by <a href="https://kavinda.vercel.app">Kiwi</a></p>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function updateCountdown() {
+            const startTime = new Date("March 19, 2025 05:00:00").getTime();
+            const endTime = startTime + (100 * 60 * 60 * 1000);
+            const now = new Date().getTime();
+            const timeLeft = endTime - now;
+            
+            if (timeLeft <= 0) {
+                document.getElementById("countdown").innerHTML = "Time's up!";
+                return;
+            }
+            
+            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = 
+                `<div class="d-flex flex-column"><h1 class="fw-bold display-3 mb-0">${String(hours).padStart(2, '0')} </h1><span class="h6">hours<span></div><div class="d-flex flex-column"><h1 class="fw-bold mb-0"> ${String(minutes).padStart(2, '0')} </h1><span class="h6">minutes<span></div><div class="d-flex flex-column"><h1 class="fw-bold mb-0"> ${String(seconds).padStart(2, '0')} </h1><span class="h6">seconds<span></div>`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to avoid delay
+    </script>
+</body>
+</html>
